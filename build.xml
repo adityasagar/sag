@@ -1,70 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project basedir="." default="package" name="PROJECT_NAME">
-	<!--
-	This script assumes:
-	1) CATALINA_HOME environment variable points to tomcat's directory
-	2) Following Folder Structure
-	./ (project root)
-	|- src/ (project.src.dir - source folder)
-	|- build/ 
-	|  |- classes/ (project.classes.dir)
-	|- WebContent/ (project.web.dir)
-	|  |- lib/  (project.lib.dir)
-	|- PROJECT_NAME.war (project.war)
-	3) JAVA_HOME is set and point to JDK 1.6 and above
-	
-	-->
-	<property environment="env" />
-	<property name="TOMCAT_HOME" value="/opt/tomcat" />
-	<property name="debuglevel" value="source,lines,vars" />
-	<property name="target" value="1.6" />
-	<property name="source" value="1.6" />
-	<property name="project.name" value="${ant.project.name}" />
-	<property name="project.web.dir" value="WebContent" />
-	<property name="project.src.dir" value="src" />
-	<property name="project.classes.dir" value="build/classes" />
-	<property name="project.lib.dir" value="${project.web.dir}/WEB-INF/lib" />
-	<property name="project.war" value="${project.name}.war" />
-
-
-	
-	<path id="classpath.lib">
-		<fileset dir="${project.lib.dir}" includes="*.jar" />
+<project name="sagar" basedir="." default="main">
+	<path id="master-classpath">
+		<fileset dir="WebContent/WEB-INF/lib">
+			<include name="*.jar" />
+		</fileset>
+		<pathelement path="WebContent/WEB-INF/classes" />
 	</path>
-	<path id="project.classpath">
-		<pathelement location="${project.classes.dir}" />
-		<path refid="classpath.lib" />
-	</path>
-	<target name="init">
-		<mkdir dir="${project.classes.dir}" />
-		<copy includeemptydirs="false" todir="${project.classes.dir}">
-			<fileset dir="src">
-				<exclude name="**/*.java" />
-			</fileset>
-		</copy>
-	</target>
+
 	<target name="clean">
-		<delete dir="${project.classes.dir}" />
-		<delete dir="${project.war}" />
+		<delete dir="WebContent/WEB-INF/classes">
+		</delete>
+		<delete dir="dist">
+		</delete>
+		<mkdir dir="WebContent/WEB-INF/classes" />
+		<mkdir dir="dist" />
 	</target>
 
-	<target depends="init" name="build" description="Compiling all java files in ${project.src.dir}">
-		<echo message="${project.name}: ${ant.file}" />
-		<javac debug="true" debuglevel="${debuglevel}" destdir="${project.classes.dir}" includeantruntime="false" source="${source}" target="${target}">
-			<src path="src" />
-			<classpath refid="project.classpath" />
+	<target name="compile" depends="clean">
+		<javac debug="true" srcdir="src" destdir="WebContent/WEB-INF/classes" includeantruntime="true">
+			<classpath refid="master-classpath" />
 		</javac>
-
+		<javac debug="true" srcdir="test" destdir="WebContent/WEB-INF/classes" includeantruntime="true">
+			<classpath refid="master-classpath" />
+		</javac>
 	</target>
-	<target depends="build" name="package" description="Packagign all files into ${project.war}">
-		<war destfile="${project.war}" index="true" needxmlfile="fasle">
-			<classes dir="${project.classes.dir}" />
-			<lib dir="${project.lib.dir}" />
-			<fileset dir="${project.web.dir}">
-				<include name="**/*.*" />
-			</fileset>
+
+	<target name="war" depends="compile">
+		<war destfile="dist/sagar.war" webxml="WebContent/WEB-INF/web.xml" basedir="dist">
 		</war>
 	</target>
-	
+
+	<!--<path id="junit.class.path">
+		<pathelement location="WebContent/WEB-INF/classes" />
+	</path>
+
+	<target name="junit" depends="compile">
+		<mkdir dir="junitReports" />
+		<junit printsummary="yes" haltonfailure="yes" haltonerror="yes" fork="true">
+			<classpath refid="junit.class.path" />
+			<classpath>
+				<pathelement location="WebContent/WEB-INF/classes" />
+				<fileset dir="WebContent/WEB-INF/lib">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+			 formatter type="xml" / 
+			<formatter type="plain" usefile="false" />
+			<batchtest todir="junitReports">
+				<fileset dir=".">
+					<include name="test/**/*TestAll.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target> -->
+
+	<target name="main" depends="war">
+
+	</target>
 
 </project>
