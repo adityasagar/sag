@@ -1,1 +1,2 @@
- cf push
+application :
+- name : hack
