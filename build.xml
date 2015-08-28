@@ -12,8 +12,10 @@
 	|  |- lib/  (project.lib.dir)
 	|- PROJECT_NAME.war (project.war)
 	3) JAVA_HOME is set and point to JDK 1.6 and above
-	
+	echo
 	-->
+	<echo message="ssv ${CATALINA_HOME}" />
+
 	<property environment="env" />
 	<property name="TOMCAT_HOME" value="/opt/tomcat" />
 	<property name="debuglevel" value="source,lines,vars" />
