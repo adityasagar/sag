@@ -1,3 +1,6 @@
 applications :
 - name : hack
-buildpack: https://github.com/cloudfoundry/java-buildpack
+memory: 512M
+instance: 1
+path: build/adityasagar/sag/dist/sagar.war
+buildpack: https://github.com/cloudfoundry/java-buildpack.git
