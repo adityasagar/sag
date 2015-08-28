@@ -14,7 +14,7 @@
 	3) JAVA_HOME is set and point to JDK 1.6 and above
 	echo
 	-->
-	<echo message="ssv ${CATALINA_HOME}" />
+	<echo message="${CATALINA_HOME}" />
 
 	<property environment="env" />
 	<property name="TOMCAT_HOME" value="/opt/tomcat" />
