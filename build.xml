@@ -12,12 +12,11 @@
 	|  |- lib/  (project.lib.dir)
 	|- PROJECT_NAME.war (project.war)
 	3) JAVA_HOME is set and point to JDK 1.6 and above
-	echo
+	
 	-->
-	<echo message="${CATALINA_HOME}" />
-
 	<property environment="env" />
-	<property name="TOMCAT_HOME" value="/opt/tomcat" />
+	<property name="TOMCAT_HOME" value="${env.CATALINA_HOME}" />
+	<echo message="${TOMCAT_HOME}" />
 	<property name="debuglevel" value="source,lines,vars" />
 	<property name="target" value="1.6" />
 	<property name="source" value="1.6" />
@@ -27,7 +26,7 @@
 	<property name="project.classes.dir" value="build/classes" />
 	<property name="project.lib.dir" value="${project.web.dir}/WEB-INF/lib" />
 	<property name="project.war" value="${project.name}.war" />
-	<property name="project.runtime.lib" value="${TOMCAT_HOME}/shared/lib" />
+	<property name="project.runtime.lib" value="${TOMCAT_HOME}/lib" />
 	<property name="project.deploy.location" value="${TOMCAT_HOME}/webapps" />
 
 
