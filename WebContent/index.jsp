@@ -7,7 +7,7 @@
 <title>Testing</title>
 </head>
 <body>
-<form action="serv" method="post">
+<form action="serv"  method="post">
 
 enter name: <input type="text" name= "title" /><br>
 <input type="submit" value="submit">
