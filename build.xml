@@ -20,9 +20,7 @@
 		<javac debug="true" srcdir="src" destdir="WebContent/WEB-INF/classes" includeantruntime="true">
 			<classpath refid="master-classpath" />
 		</javac>
-		<javac debug="true" srcdir="test" destdir="WebContent/WEB-INF/classes" includeantruntime="true">
-			<classpath refid="master-classpath" />
-		</javac>
+		
 	</target>
 
 	<target name="war" depends="compile">
