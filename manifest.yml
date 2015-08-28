@@ -1,2 +1,3 @@
 applications :
 - name : hack
+buildpack: https://github.com/cloudfoundry/java-buildpack.git
