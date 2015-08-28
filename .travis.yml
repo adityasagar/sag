@@ -1,2 +1,10 @@
 language: java
 script: ant main
+deploy:
+   edge: true
+   provider: cloudfoundry
+   username: adityasagar1992@gmail.com
+   password: 1992ashu
+   api: https://api.run.pivotal.io
+   organization: verizon
+   space: staging
