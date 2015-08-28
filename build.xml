@@ -15,7 +15,7 @@
 	
 	-->
 	<property environment="env" />
-	<property name="TOMCAT_HOME" value="${env.CATALINA_HOME}" />
+	<property name="TOMCAT_HOME" value="/opt/tomcat" />
 	<property name="debuglevel" value="source,lines,vars" />
 	<property name="target" value="1.6" />
 	<property name="source" value="1.6" />
