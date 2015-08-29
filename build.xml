@@ -2,7 +2,7 @@
     <property name="dir.src"     value="src"/>
     <property name="dir.build"   value="build"/>
     <property name="dir.classes" value="${dir.build}/classes"/>
-    <property name="dir.jar"     value="${dir.build}/jar"/>
+    <property name="dir.jar"     value="WebContent/WEB-INF/lib"/>
 
     <property name="main-class"  value="sagar"/>
 
@@ -22,8 +22,7 @@
                 <attribute name="Main-Class" value="${main-class}"/>
             </manifest>
         </jar>
-    </target>
-	
+    </target>	
 
     <target name="run" depends="jar">
         <java jar="${dir.jar}/${ant.project.name}.jar" fork="true"/>
