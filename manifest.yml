@@ -2,4 +2,5 @@ applications :
 - name : sagar
 memory: 512M
 instance: 1
+path: dist/sagaradi.war
 buildpack: https://github.com/cloudfoundry/java-buildpack
