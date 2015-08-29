@@ -44,7 +44,10 @@
 	</target>
 	<target name="clean">
 		<delete dir="${project.classes.dir}" />
-		<delete dir="${project.war}" />
+		<delete dir="dist/${project.war}" />
+		<delete dir="dist">
+		</delete>
+		<mkdir dir="dist" />
 	</target>
 
 	<target depends="init" name="build" description="Compiling all java files in ${project.src.dir}">
@@ -56,7 +59,7 @@
 
 	</target>
 	<target depends="build" name="package" description="Packagign all files into ${project.war}">
-		<war destfile="${project.war}" index="true" needxmlfile="fasle">
+		<war destfile="dist/${project.war}" index="true" basedir="dist">
 			<classes dir="${project.classes.dir}" />
 			<lib dir="${project.lib.dir}" />
 			<fileset dir="${project.web.dir}">
