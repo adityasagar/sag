@@ -1,5 +1,5 @@
 applications :
-- name : hack
+- name : sagar
 memory: 512M
 instance: 1
 path: dist/sagar.war
